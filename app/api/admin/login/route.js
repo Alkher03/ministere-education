@@ -1,10 +1,11 @@
-// NE PAS importer supabase en haut du fichier
-// Supprime cette ligne : import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
 export async function GET() {
   try {
-    // IMPORT DYNAMIQUE
-    const { supabase } = await import('@/lib/supabase')
+    const supabase = getSupabase()
     
     const { data, error } = await supabase
       .from('admins')

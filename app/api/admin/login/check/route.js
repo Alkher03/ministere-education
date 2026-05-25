@@ -1,10 +1,12 @@
-// NE PAS importer supabase en haut du fichier
-// Supprime cette ligne si elle existe : import { supabase } from '@/lib/supabase'
+import { getSupabase } from '@/lib/supabase'
+
+export const dynamic = 'force-dynamic'
+export const fetchCache = 'force-no-store'
+export const runtime = 'nodejs'
 
 export async function POST(request) {
   try {
-    // IMPORT DYNAMIQUE - La clé pour que ça fonctionne sur Vercel
-    const { supabase } = await import('@/lib/supabase')
+    const supabase = getSupabase()
     
     const { email, password } = await request.json()
 
@@ -15,8 +17,6 @@ export async function POST(request) {
       .select('*')
       .eq('email', email)
       .maybeSingle()
-
-    console.log('📊 Résultat:', data)
 
     if (error) {
       console.log('Erreur Supabase:', error.message)
