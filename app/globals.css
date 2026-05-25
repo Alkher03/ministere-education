@@ -24,3 +24,140 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Animation douce pour les cartes */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   UNIFORMISATION DES CARTES D'ACTUALITÉS
+   ============================================ */
+
+.actualite-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 450px;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.actualite-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Image */
+.actualite-card .card-image {
+  height: 200px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.actualite-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.actualite-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* Contenu */
+.actualite-card .card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+/* Titre - limite à 2 lignes */
+.actualite-card .card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 56px;
+  line-height: 1.4;
+}
+
+/* Description - limite à 3 lignes */
+.actualite-card .card-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Footer */
+.actualite-card .card-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Bouton lire la suite */
+.actualite-card .btn-read {
+  color: #2563eb;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.actualite-card .btn-read:hover {
+  color: #1d4ed8;
+}
+
+/* Pour les cartes sans image - compensation de hauteur */
+.actualite-card.no-image .card-content {
+  min-height: 450px;
+}
+
+/* Style RTL pour l'arabe */
+.rtl {
+  direction: rtl;
+}
+
+.rtl .card-footer {
+  justify-content: flex-end;
+}
+
+.rtl .btn-read {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+}
+
+/* Lignes tronquées (fallback) */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
