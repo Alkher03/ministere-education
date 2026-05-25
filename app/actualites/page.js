@@ -24,7 +24,7 @@ export default function ActualitesPage() {
   }, [selectedCategory, actualites, currentLang])
 
   async function fetchActualites() {
-    const { data } = await supabase
+  const supabase = getSupabase()  // ✅ ajouter cette ligne
       .from('actualites')
       .select('*')
       .order('date_publication', { ascending: false })
