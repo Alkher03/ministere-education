@@ -24,14 +24,15 @@ export default function ActualitesPage() {
   }, [selectedCategory, actualites, currentLang])
 
   async function fetchActualites() {
-  const supabase = getSupabase()  // ✅ ajouter cette ligne
-      .from('actualites')
-      .select('*')
-      .order('date_publication', { ascending: false })
+  const supabase = getSupabase()
+  const { data } = await supabase
+    .from('actualites')
+    .select('*')
+    .order('date_publication', { ascending: false })
 
-    setActualites(data || [])
-    setLoading(false)
-  }
+  setActualites(data || [])
+  setLoading(false)
+}
 
   function filterActualites() {
     let filtered = [...actualites]
