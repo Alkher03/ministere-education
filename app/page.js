@@ -21,6 +21,8 @@ export default function Home() {
   }, [currentLang])
 
   const fetchData = async () => {
+      const supabase = getSupabase()  // ← ajouter cette ligne
+
     const { data: actus } = await supabase
       .from('actualites')
       .select('*')
