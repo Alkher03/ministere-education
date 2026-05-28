@@ -34,6 +34,8 @@ export default function PublicationsPage() {
   }, [searchTerm, selectedCategory, publications])
 
   async function fetchPublications() {
+      setLoading(true)
+      const supabase = getSupabase()  // ← ajouter cette ligne
     const { data, error } = await supabase
       .from('publications')
       .select('*')
