@@ -30,6 +30,8 @@ export default function ActualiteDetail({ params }) {
 
   async function fetchActualite() {
     setLoading(true)
+      const supabase = getSupabase()  // ← ajouter cette ligne
+
     
     const { data, error } = await supabase
       .from('actualites')
