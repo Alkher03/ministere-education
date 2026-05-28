@@ -21,6 +21,7 @@ export default function Home() {
   }, [currentLang])
 
   const fetchData = async () => {
+      setLoading(true)
       const supabase = getSupabase()  // ← ajouter cette ligne
 
     const { data: actus } = await supabase
@@ -75,7 +76,7 @@ export default function Home() {
 
       {/* Hero Section avec image de fond */}
       <div className="relative w-full h-[400px] md:h-[500px] overflow-hidden">
-        <div className="absolute inset-0 bg-blue-700" />
+        <div className="absolute inset-0 bg-gray-200" />
         <div className="relative z-10 flex items-center h-full px-6 md:px-12 max-w-6xl mx-auto">
           <div className={`flex items-center gap-6 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <Image
@@ -85,11 +86,11 @@ export default function Home() {
               height={200}
               className="object-contain"
             />
-            <div className="text-white">
+            <div className="text-black">
               <h1 className="text-3xl md:text-5xl font-bold leading-tight">
                 {t('ministry')}
               </h1>
-              <p className="mt-2 text-sm md:text-lg text-gray-200">
+              <p className="mt-2 text-sm md:text-lg text-black-200">
                 {t('motto')}
               </p>
             </div>
